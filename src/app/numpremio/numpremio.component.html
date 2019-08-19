@@ -1,0 +1,10 @@
+<li *ngFor="let n of getNumPremios()" class="col-xs-6 col-md-2" (transitionend)="removeTransition($event)">
+  <div class="thumbnail" id="n{{n.numero}}">
+    <div style="font-size:x-small">
+      {{n.persona}} <span *ngIf="n.lugar">- {{n.lugar}}</span>&nbsp;
+      <a *ngIf="n.delete" class="close" href="#" (click)="removeNumero(n.numero)">×</a>
+    </div>
+    <h2>{{ n.numero | numloto : '5' }}</h2>
+    <p>{{ n.premio | number }}€</p>
+  </div>
+</li>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="page-header">
+    <h4><strong>Estado del sorteo:</strong> {{ getEstadoSorteo() }}</h4>
+    <p><strong>Última actualización:</strong> {{ getUltimaActualizacion() | date : 'HH:mm' }}</p>
+  </div>
+  <div class="container">
+      
+    <div class="form-inline">
+      <div class="form-group">
+      <input type="text" id="newPer" placeholder="Persona" class="form-control dataInput" onDrag="return false" onDrop="return false" #newPer>
+      <input type="text" placeholder="Lugar" class="form-control dataInput" onDrag="return false" onDrop="return false" #newLug>
+      <input type="number" min=0 max=99999 (change)="handleChange($event)" (keypress)="handleInputNum(newPer.value,newLug.value,$event)" class="form-control dataInput"
+        placeholder="Número" autocomplete=off onDrag="return false" onDrop="return false" onPaste="return false" #newNum>
+      </div>
+        <button [disabled]="newNum.value == ''" (click)="addNum(newPer.value,newLug.value,newNum.value);" 
+        class="btn btn-primary" type="button">Añadir</button>
+      </div>
+  </div>
+
+  <div class="container">
+    <ul class="list-unstyled">
+      <app-numpremio></app-numpremio>
+    </ul>
+  </div>
+  <div>
+    <h4><strong>Premio total: {{ getPremioTotal() }}€</strong></h4>
+  </div>
+</div>
